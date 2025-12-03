@@ -1,6 +1,7 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonList } from '@ionic/react';
+
 import './Tab1.css';
+import RepoItem from '../components/RepoItem';
 
 const Tab1: React.FC = () => {
   return (
@@ -16,7 +17,17 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonList> 
+          <RepoItem name="android-project"
+            imageUrl='https://media.tenor.com/5dNe3mEYY0wAAAAe/gato-gato-sacando-la-lengua.png' 
+            />
+            <RepoItem name="ios-project"
+            imageUrl='https://cdn-icons-png.flaticon.com/512/226/226770.png?w=360' 
+            />
+            <RepoItem name="ionic-project"
+            imageUrl='https://cdn-icons-png.flaticon.com/512/226/226770.png?w=360' 
+            />
+        </IonList>
       </IonContent>
     </IonPage>
   );
