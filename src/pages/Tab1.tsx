@@ -1,32 +1,45 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonList } from '@ionic/react';
-
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonList, useIonViewDidEnter } from '@ionic/react';
+import { useState } from 'react';
 import './Tab1.css';
 import RepoItem from '../components/RepoItem';
+import { RepositoryItem } from '../interfaces/RepositoryItem';
+import { fetchRepositories } from '../services/GithubService';
+
 
 const Tab1: React.FC = () => {
+
+  const [repos, setRepos] = useState<RepositoryItem[]>([]);
+
+  const loadRepos = async () => {
+    const reposData = await fetchRepositories();
+    setRepos(reposData);
+  };
+
+  useIonViewDidEnter(() => {
+    console.log("IionViewDidEnter - Cargando repositorios");
+    loadRepos();
+  });
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Repositorios</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Repositorios</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList> 
-          <RepoItem name="android-project"
-            imageUrl='https://media.tenor.com/5dNe3mEYY0wAAAAe/gato-gato-sacando-la-lengua.png' 
+        <IonList>
+          {repos.map((repo, index) => (
+            <RepoItem
+            key={index}
+            repo={repo}
             />
-            <RepoItem name="ios-project"
-            imageUrl='https://cdn-icons-png.flaticon.com/512/226/226770.png?w=360' 
-            />
-            <RepoItem name="ionic-project"
-            imageUrl='https://cdn-icons-png.flaticon.com/512/226/226770.png?w=360' 
-            />
+          ))} 
         </IonList>
       </IonContent>
     </IonPage>
