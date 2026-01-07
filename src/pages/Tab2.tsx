@@ -6,7 +6,7 @@ import { IonInput,IonTextarea } from '@ionic/react';
 import './Tab2.css';
 
 import { createRepository } from '../services/GithubService';
-
+//CLASE 12
 const Tab2: React.FC = () => {
 
   const history = useHistory();
