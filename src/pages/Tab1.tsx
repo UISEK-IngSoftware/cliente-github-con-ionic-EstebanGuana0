@@ -38,6 +38,7 @@ const Tab1: React.FC = () => {
             <RepoItem
             key={index}
             repo={repo}
+            onRefresh={loadRepos} 
             />
           ))} 
         </IonList>

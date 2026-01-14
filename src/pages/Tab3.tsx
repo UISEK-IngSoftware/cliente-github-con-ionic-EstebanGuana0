@@ -43,8 +43,8 @@ const Tab3: React.FC = () => {
           </IonToolbar>
         </IonHeader>
          <IonCard>
-      <img alt={userInfo?.name}
-      src ={userInfo?.avatar_url} />
+      <img alt="https://i.pinimg.com/originals/30/29/51/3029517e824f67d07d86af9bf0b0d795.gif"
+      src ="https://i.pinimg.com/originals/30/29/51/3029517e824f67d07d86af9bf0b0d795.gif" />
       <IonCardHeader>
         <IonCardTitle>{userInfo?.name}</IonCardTitle>
         <IonCardSubtitle>{userInfo?.login}</IonCardSubtitle>
